@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Juego de Memoria - OTEC USPEC</title>
-    
+
     <link rel="stylesheet" href="style.css">
-    
+
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.0.6/tsparticles.slim.bundle.min.js"></script>
 </head>
+
 <body>
 
     <div id="tsparticles"></div>
@@ -22,7 +24,7 @@
             <p>Puntos: <span id="puntos-j1">0</span></p>
             <p class="reloj">⏱️ <span id="tiempo-j1">00:00</span></p>
         </div>
-        
+
         <div class="info-turno">
             <h2 id="texto-turno">Turno: Jugador 1</h2>
             <p>Intentos restantes: <span id="intentos-restantes">2</span></p>
@@ -34,12 +36,13 @@
             <p class="reloj">⏱️ <span id="tiempo-j2">00:00</span></p>
         </div>
     </div>
-    
+
     <div id="tablero-juego" class="tablero"></div>
 
     <div id="modal-info" class="oculto">
         <div class="modal-contenido animacion-pop">
-            <img id="imagen-mensaje" src="" alt="Servicio" style="max-width: 250px; height: 250px; object-fit: contain; margin-bottom: 15px;">
+            <img id="imagen-mensaje" src="" alt="Servicio"
+                style="max-width: 250px; height: 250px; object-fit: contain; margin-bottom: 15px;">
             <h2 id="titulo-mensaje"></h2>
             <p id="texto-mensaje"></p>
             <button onclick="cerrarMensaje()" class="btn-continuar">¡Entendido, Continuemos!!!</button>
@@ -56,4 +59,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
