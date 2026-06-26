@@ -1,0 +1,31 @@
+{
+  "name": "juego-uspec",
+  "version": "1.0.0",
+  "description": "Juego de Memoria - OTEC USPEC",
+  "main": "main.js",
+  "author": "USPEC",
+  "license": "ISC",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win"
+  },
+  "devDependencies": {
+    "electron": "^41.7.1",
+    "electron-builder": "^26.15.3"
+  },
+  "build": {
+    "appId": "com.uspec.juego",
+    "productName": "Juego USPEC",
+    "win": {
+      "target": "nsis",
+      "icon": "img/app.png"
+    },
+    "files": [
+      "index.html",
+      "style.css",
+      "script.js",
+      "main.js",
+      "img/**"
+    ]
+  }
+}
