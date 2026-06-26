@@ -63,10 +63,23 @@ h1, h2, p, .panel-puntuacion {
 /* --- EL TABLERO --- */
 .tablero {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 12px;
     max-width: 1200px;
     margin: 0 auto;
+}
+
+@media (max-width: 550px) {
+    body { padding: 8px; }
+    h1 { font-size: 20px; margin: 8px 0; }
+    h2 { font-size: 15px; margin-bottom: 10px; }
+    .panel-puntuacion { padding: 8px 12px; margin-bottom: 12px; }
+    .jugador { padding: 8px 10px; }
+    .jugador p { font-size: 15px; }
+    .tablero {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 7px;
+    }
 }
 
 /* --- ESTILOS DE LA CARTA --- */
