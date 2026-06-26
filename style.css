@@ -1,0 +1,126 @@
+/* --- CONFIGURACIÓN GENERAL --- */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 { color: #004b87; }
+h2 { color: #333; margin-bottom: 20px; }
+
+h1, h2, p, .panel-puntuacion {
+    position: relative;
+    z-index: 1; 
+}
+
+/* --- ESTILOS DEL PANEL DE PUNTUACIÓN --- */
+.panel-puntuacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+    background: white;
+    padding: 15px 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-top: 5px solid #004b87;
+}
+
+.jugador {
+    padding: 15px 25px;
+    border-radius: 10px;
+    border: 3px solid transparent;
+    transition: all 0.3s;
+    opacity: 0.4; 
+    background-color: #f9f9f9;
+}
+
+.jugador.activo {
+    border-color: #004b87;
+    background-color: #e6f0fa; 
+    opacity: 1; 
+    transform: scale(1.1); 
+    box-shadow: 0 4px 10px rgba(0, 75, 135, 0.2);
+}
+
+.jugador h3 { margin: 0 0 5px 0; color: #004b87; }
+.jugador p { margin: 0; font-size: 20px; font-weight: bold; color: #333;}
+
+/* Estilos del Cronómetro */
+.reloj {
+    font-size: 16px !important;
+    color: #555 !important;
+    margin-top: 5px !important;
+    font-weight: normal !important;
+}
+
+.info-turno h2 { margin: 0 0 5px 0; color: #ff9800; font-size: 26px; }
+.info-turno p { margin: 0; font-weight: bold; color: #666; font-size: 16px; }
+
+/* --- EL TABLERO --- */
+.tablero {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- ESTILOS DE LA CARTA --- */
+.carta {
+    width: 100%; aspect-ratio: 1 / 1; perspective: 1000px; cursor: pointer; transition: transform 0.3s ease;
+}
+.carta:hover { transform: scale(1.05) translateY(-5px); z-index: 10; }
+
+.carta-inner { width: 100%; height: 100%; transition: transform 0.6s; transform-style: preserve-3d; position: relative; }
+.carta.volteada .carta-inner, .carta.encontrada .carta-inner { transform: rotateY(180deg); }
+
+.carta-frente, .carta-dorso {
+    width: 100%; height: 100%; position: absolute; backface-visibility: hidden; display: flex; align-items: center; justify-content: center;
+    border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 14px; font-weight: bold; padding: 10px; box-sizing: border-box;
+}
+
+.carta-dorso {
+    background: linear-gradient(-45deg, #004b87, #0081c6, #001a33, #005f9e); background-size: 400% 400%; animation: brilloFluido 5s ease infinite;
+    color: white; font-size: 26px; font-weight: 900; letter-spacing: 3px; text-shadow: 2px 2px 5px rgba(0,0,0,0.6); box-shadow: inset 0 0 15px rgba(255,255,255,0.2); 
+}
+@keyframes brilloFluido { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+.carta-frente { background-color: #ffffff; transform: rotateY(180deg); border: 2px solid #004b87; }
+.carta-frente img { width: 80%; height: 80%; object-fit: contain; }
+
+/* --- VENTANA EMERGENTE NORMAL --- */
+#modal-info {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); display: flex; align-items: center; justify-content: center; z-index: 1000;
+}
+.modal-contenido {
+    background: white; padding: 40px 30px; border-radius: 20px; max-width: 450px; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.5); border-top: 8px solid #004b87;
+}
+#titulo-mensaje { color: #004b87; font-size: 26px; margin-top: 0; margin-bottom: 10px; }
+#texto-mensaje { font-size: 17px; color: #555; line-height: 1.5; margin-bottom: 25px; }
+
+.btn-continuar {
+    padding: 12px 30px; background-color: #004b87; color: white; border: none; border-radius: 25px; cursor: pointer; font-size: 18px; font-weight: bold; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0, 75, 135, 0.3);
+}
+.btn-continuar:hover { background-color: #0081c6; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0, 129, 198, 0.4); }
+
+.animacion-pop { animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+@keyframes popIn { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+
+/* --- VENTANA GIGANTE DE VICTORIA --- */
+#modal-victoria {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 75, 135, 0.85); display: flex; align-items: center; justify-content: center; z-index: 2000;
+}
+.victoria-estilo { background: white; padding: 50px; border-radius: 20px; max-width: 500px; text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,0.5); transform: scale(1.1); }
+.victoria-estilo h2 { font-size: 32px; color: #ff9800; margin-bottom: 15px; margin-top: 0; }
+.victoria-estilo p { font-size: 20px; color: #333; line-height: 1.5; }
+
+.btn-jugar { margin-top: 25px; padding: 15px 30px; font-size: 20px; background-color: #28a745; color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; transition: background-color 0.3s; }
+.btn-jugar:hover { background-color: #218838; }
+
+/* --- FONDO TECNOLÓGICO (PARTÍCULAS) --- */
+#tsparticles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+.oculto { display: none !important; }

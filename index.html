@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Juego de Memoria - OTEC USPEC</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.0.6/tsparticles.slim.bundle.min.js"></script>
+</head>
+<body>
+
+    <div id="tsparticles"></div>
+
+    <h1>SERVICIOS TECNOLÓGICOS OTEC</h1>
+    <h2>Encuentra las parejas y descubre nuestros servicios!!!</h2>
+
+    <div class="panel-puntuacion">
+        <div id="marcador-j1" class="jugador activo">
+            <h3>Jugador 1</h3>
+            <p>Puntos: <span id="puntos-j1">0</span></p>
+            <p class="reloj">⏱️ <span id="tiempo-j1">00:00</span></p>
+        </div>
+        
+        <div class="info-turno">
+            <h2 id="texto-turno">Turno: Jugador 1</h2>
+            <p>Intentos restantes: <span id="intentos-restantes">2</span></p>
+        </div>
+
+        <div id="marcador-j2" class="jugador">
+            <h3>Jugador 2</h3>
+            <p>Puntos: <span id="puntos-j2">0</span></p>
+            <p class="reloj">⏱️ <span id="tiempo-j2">00:00</span></p>
+        </div>
+    </div>
+    
+    <div id="tablero-juego" class="tablero"></div>
+
+    <div id="modal-info" class="oculto">
+        <div class="modal-contenido animacion-pop">
+            <img id="imagen-mensaje" src="" alt="Servicio" style="max-width: 250px; height: 250px; object-fit: contain; margin-bottom: 15px;">
+            <h2 id="titulo-mensaje"></h2>
+            <p id="texto-mensaje"></p>
+            <button onclick="cerrarMensaje()" class="btn-continuar">¡Entendido, Continuemos!!!</button>
+        </div>
+    </div>
+
+    <div id="modal-victoria" class="oculto">
+        <div class="modal-contenido victoria-estilo">
+            <h2 id="titulo-victoria"></h2>
+            <p id="texto-victoria"></p>
+            <button onclick="reiniciarJuego()" class="btn-jugar">Jugar de nuevo 🔄</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
